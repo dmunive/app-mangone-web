@@ -1,0 +1,27 @@
+<div>
+    <div class="title">{{title}}</div>
+    <button type="button" mat-raised-button color="primary" (click)="inputFile.click()" matTooltip="Subir archivo">
+        <mat-icon>file_upload</mat-icon>
+        Subir archivo
+    </button>
+    <div class="loader" *ngIf="isLoading">
+        <mat-progress-spinner [color]="primary" [mode]="'indeterminate'" [diameter]="25">
+        </mat-progress-spinner>
+    </div>
+    <button *ngIf="fileImage&&control.value" type="button" mat-raised-button color="primary" (click)="showImage()" matTooltip="Ver imagen">
+        <mat-icon>remove_red_eye</mat-icon>
+        Ver imagen
+    </button>
+    <div class="file-name">
+        <ng-container *ngIf="fileName&&control.value">
+            {{'Archivo: ' + fileName}}
+        </ng-container>
+        <ng-container *ngIf="!(fileName&&control.value)">
+            {{placeholder}}
+        </ng-container>
+    </div>
+    <div class="error-message">
+        {{errorMessage}}
+    </div>
+    <input #inputFile type="file" (change)="fileChange($event)" hidden>
+</div>

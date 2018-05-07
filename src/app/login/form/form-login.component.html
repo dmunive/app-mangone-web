@@ -1,0 +1,33 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="form-login">
+      <div class="form-title">
+        <span>Iniciar sesión</span>
+      </div>
+      <form class="form-content" [formGroup]="signInForm">
+        <div fxLayout="column" fxLayoutGap="20px">
+          <mat-form-field hintLabel="Ingrese su correo">
+            <input type="email" placeholder="Correo" matInput formControlName="email">
+            <mat-error *ngIf="signInForm.controls.email.hasError('required')">
+              Por favor, ingrese el campo correo
+            </mat-error>
+            <mat-error *ngIf="signInForm.controls.email.hasError('email')">
+              Por favor, ingrese un correo válido
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="password" placeholder="Contraseña" matInput formControlName="password">
+            <mat-hint>La contraseña es mínimo 8 caracteres</mat-hint>
+            <mat-error *ngIf="signInForm.controls.password.hasError('required')">
+              Por favor, ingrese el campo correo
+            </mat-error>
+          </mat-form-field>
+          <button mat-flat-button color="accent" (click)="signIn()">Ingresar</button>
+        </div>
+      </form>
+      <div class="login-logo" fxFlex fxLayoutAlign="start center">
+        <img src="/assets/images/batman.png">
+      </div>
+    </div>
+  </div>
+</div>

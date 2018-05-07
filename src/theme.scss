@@ -1,0 +1,19 @@
+@import '~@angular/material/theming';
+
+$app-primary: mat-palette($mat-cyan, 700);
+$app-accent:  mat-palette($mat-teal, A400);
+$app-warn:    mat-palette($mat-red, A200);
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+$typography: mat-typography-config(
+    $font-family: 'Roboto, monospace'
+);
+
+@include mat-core($typography);
+@include angular-material-theme($app-theme);
+
+* {
+    font-family: mat-font-family($typography);
+}
+

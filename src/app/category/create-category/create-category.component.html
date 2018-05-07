@@ -1,0 +1,39 @@
+<div class="wrapper">
+    <div class="container">
+      <div class="form-register">
+        <div class="form-title">
+          <span>Registrar Categoría</span>
+        </div>
+        <form class="form-content" [formGroup]="createForm">
+          <div fxFlex fxLayout="column" fxLayoutGap="20px" fxFlex.gt-xs="500px">
+            <mat-form-field>
+              <input type="text" matInput placeholder="Nombre" formControlName="name">
+              <mat-error *ngIf="createForm.controls.name.hasError('required')">
+                Por favor, ingrese el campo nombre
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Estado" formControlName="status">
+                <mat-option *ngFor="let status of statusList" [value]="status.value">{{status.description}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="createForm.controls.status.hasError('required')">
+                  Por favor, seleccione el campo estado
+              </mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+                <button type="button" mat-raised-button color="accent" (click)="create()">
+                  <mat-icon>save</mat-icon>
+                  Guardar
+                </button>
+                <button type="button" mat-raised-button color="accent" (click)="goToList()">
+                  <mat-icon>cancel</mat-icon>
+                  Cancelar
+                </button>     
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,61 @@
+<div class="wrapper">
+    <div class="container">
+      <div class="form-register">
+        <div class="form-title">
+          <span>Editar Usuario</span>
+        </div>
+        <form class="form-content" [formGroup]="updateForm">
+          <div fxFlex fxLayout="column" fxLayoutGap="20px" fxFlex.gt-xs="500px">
+            <mat-form-field>
+              <input type="text" matInput placeholder="Nombres" formControlName="name">
+              <mat-error *ngIf="updateForm.controls.name.hasError('required')">
+                Por favor, ingrese el campo nombres
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="text" matInput placeholder="Apellidos" formControlName="lastName">
+              <mat-error *ngIf="updateForm.controls.lastName.hasError('required')">
+                  Por favor, ingrese el campo apellidos
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input type="email" matInput placeholder="Correo" formControlName="email">
+              <mat-error *ngIf="updateForm.controls.email.hasError('required')">
+                  Por favor, ingrese el campo correo
+              </mat-error>
+              <mat-error *ngIf="updateForm.controls.email.hasError('email')">
+                  Por favor, ingrese un correo válido
+              </mat-error>
+            </mat-form-field>
+            <mat-slide-toggle (click)="tooglePassword()">Cambiar contraseña</mat-slide-toggle>
+            <mat-form-field>
+              <input type="password" matInput placeholder="Contraseña" formControlName="password">
+              <mat-error *ngIf="updateForm.controls.password.hasError('required') && !isPasswordDisabled">
+                Por favor, ingrese el campo contraseña
+            </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <mat-select placeholder="Estado" formControlName="status">
+                <mat-option *ngFor="let status of statusList" [value]="status.value">{{status.description}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="updateForm.controls.status.hasError('required')">
+                  Por favor, seleccione el campo estado
+              </mat-error>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+                <button type="button" mat-raised-button color="accent" (click)="update()">
+                  <mat-icon>save</mat-icon>
+                  Guardar
+                </button>
+                <button type="button" mat-raised-button color="accent" (click)="goToList()">
+                  <mat-icon>cancel</mat-icon>
+                  Cancelar
+                </button>     
+              </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

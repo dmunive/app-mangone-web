@@ -1,0 +1,76 @@
+<mat-sidenav-container>
+  <mat-sidenav #menu class="menu">
+    <mat-nav-list (click)="menu.close()">
+      <div class="menu-content">
+        <div class="menu-logo">
+          <img src="/assets/images/logo.png">
+        </div>
+        <span class="menu-title">M@ngone</span>    
+      </div>
+      <mat-list>
+        <h3 mat-subheader>
+          Usuarios
+        </h3>
+        <a routerLink="/users" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" mat-list-item>
+          <mat-icon mat-list-icon>list</mat-icon>
+          <h4 mat-line>Listar</h4>
+        </a>
+        <a routerLink="/users/create" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" mat-list-item>
+          <mat-icon mat-list-icon>add_circle</mat-icon>
+          <h4 mat-line>Crear</h4>
+        </a>
+        <h3 mat-subheader>
+          Categorías
+        </h3>
+        <a routerLink="/categories" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" mat-list-item>
+          <mat-icon mat-list-icon>list</mat-icon>
+          <h4 mat-line>Listar</h4>
+        </a>
+        <a routerLink="/categories/create" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" mat-list-item>
+          <mat-icon mat-list-icon>add_circle</mat-icon>
+          <h4 mat-line>Crear</h4>
+        </a>
+        <h3 mat-subheader>
+          Comics
+        </h3>
+        <a routerLink="/comics" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" mat-list-item>
+          <mat-icon mat-list-icon>list</mat-icon>
+          <h4 mat-line>Listar</h4>
+        </a>
+        <a routerLink="/comics/create" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}" mat-list-item>
+          <mat-icon mat-list-icon>add_circle</mat-icon>
+          <h4 mat-line>Crear</h4>
+        </a>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="menu-bar">
+      <mat-toolbar-row>
+        <button mat-icon-button  (click)="menu.open()">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div class="menu-logo" fxFlex fxLayoutAlign="start center">
+          <img src="/assets/images/logo.png">
+        </div>
+        <div fxFlex fxLayoutAlign="flex-end">
+          <div>
+            <div fxFlex fxLayoutAlign="center" [matMenuTriggerFor]="userMenu">
+              <button mat-icon-button>
+                  <mat-icon>more_vert</mat-icon>
+              </button>
+            </div>
+            <mat-menu #userMenu>
+              <button mat-menu-item (click)="signOut()">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Cerrar sesión</span>
+              </button>
+            </mat-menu>
+          </div>
+        </div>
+      </mat-toolbar-row>      
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

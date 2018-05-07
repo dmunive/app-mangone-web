@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="form-register">
+      <div class="form-title">
+        <span>Editar Capítulo</span>
+      </div>
+      <form class="form-content" [formGroup]="updateForm">
+        <div fxFlex fxLayout="column" fxLayoutGap="20px" fxFlex.gt-xs="500px">
+          <mat-form-field>
+            <input type="text" matInput placeholder="Nombre" formControlName="name">
+            <mat-error *ngIf="updateForm.controls.name.hasError('required')">
+              Por favor, ingrese el campo nombre
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input type="text" matInput placeholder="Nùmero" formControlName="number">
+            <mat-error *ngIf="updateForm.controls.number.hasError('required')">
+              Por favor, ingrese el campo número
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select placeholder="Estado" formControlName="status">
+              <mat-option *ngFor="let status of statusList" [value]="status.value">{{status.description}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="updateForm.controls.status.hasError('required')">
+                Por favor, seleccione el campo estado
+            </mat-error>
+          </mat-form-field>
+          <app-file-upload [title]="'Imagen'" [placeholder]="'Seleccione un archivo'" [accept]="'image/png,image/x-png,image/jpeg'" [maxSize]="2048" [control]="updateForm.controls.image"></app-file-upload>
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+            <button type="button" mat-raised-button color="accent" (click)="update()">
+              <mat-icon>save</mat-icon>
+              Guardar
+            </button>
+            <button type="button" mat-raised-button color="accent" (click)="goToList()">
+              <mat-icon>cancel</mat-icon>
+              Cancelar
+            </button>     
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

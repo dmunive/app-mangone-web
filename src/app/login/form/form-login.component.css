@@ -1,0 +1,34 @@
+.container .form-login {
+    width: 400px;
+    margin: 20vh auto 0 auto;
+    border: 1px solid rgba(0,0,0,.03);
+    box-shadow: 0 2px 2px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
+}
+
+.container .form-login .form-title {
+    text-align: left;
+    padding: 20px 20px;
+    color: rgba(0,0,0,.54);
+    background: rgba(0,0,0,.03);
+}
+
+.container .form-login .form-content {
+    padding: 20px;
+}
+
+.container .form-login .login-logo {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.container .form-login .login-logo img{
+    width: 100px;
+}
+
+@media (max-width: 600px) {
+    .container .form-login {
+        margin: 10vh auto 0 auto;
+        width: 100%;
+        max-width: 400px;
+    }
+}

@@ -1,0 +1,74 @@
+@font-face {
+    font-family: 'Booklet Cordel';
+    src: url('/assets/fonts/booklet-cordel.ttf');
+ }
+mat-sidenav-container,
+mat-sidenav,
+mat-sidenav-content {
+    height: 100vh;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+mat-sidenav {
+    width: 300px;
+}
+
+.mat-list, .mat-nav-list, .mat-selection-list{
+    padding: 0px;
+}
+
+.menu .active-link{
+    background-color: rgb(55,140,140,0.2);
+}
+
+.menu .menu-title{
+    display: block;
+    font-family: 'Booklet Cordel';
+    font-size: 45px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.menu .menu-content{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(55,140,140);
+    height: 280px;
+    align-items: center;
+    justify-content: center;
+    border-top: 25px solid rgba(255,255,255,0.5);
+    border-bottom: 25px solid rgba(255,255,255,0.5);
+}
+
+.menu .menu-content .menu-logo{
+    display: block;
+    height: 65px;
+    width: auto;    
+    text-align: center;
+    padding: 20px 0px;
+}
+
+.menu .menu-content .menu-logo img{
+    height: 100%;
+    width: auto;
+}
+
+.menu-bar .menu-logo{
+    margin-left: 15px;
+    height: 45px;
+    width: auto;
+}
+
+.menu-bar .menu-logo img{
+    height: 100%;
+    width: auto;
+}
+
+@media (max-width: 600px) {
+    .menu-bar .menu-logo{
+        height: 40px;
+    }
+  }

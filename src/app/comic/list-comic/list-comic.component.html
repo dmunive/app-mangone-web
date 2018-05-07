@@ -1,0 +1,87 @@
+<div class="wrapper">
+    <div class="container">
+      <div class="form-search">
+        <div class="form-title">
+          <span>Búsqueda de Comics</span>
+        </div>
+        <form class="form-content" [formGroup]="searchForm">
+          <div fxLayout fxLayout.xs="column" fxLayoutGap="20px">
+            <mat-form-field fxFlex>
+              <input matInput placeholder="Nombre" formControlName=name>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+              <mat-select placeholder="Estado" formControlName="status">
+                <mat-option *ngFor="let status of statusList" [value]="status.value">{{status.description}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div fxFlex></div>
+          </div>
+          <div fxLayout="row">
+            <div fxFlex fxLayoutGap="10px" fxLayoutAlign="start">
+              <button type="button" mat-raised-button color="accent" (click)="goToCreate()">
+                <mat-icon>add_circle</mat-icon>
+                Crear
+              </button>
+            </div>
+          </div> 
+          <div fxLayout="row">
+            <div fxFlex fxLayoutGap="10px" fxLayoutAlign="end">
+              <button type="button" mat-raised-button color="accent" (click)="clean()">
+                <mat-icon>refresh</mat-icon>
+                Limpiar
+              </button>
+              <button type="button" mat-raised-button color="accent" (click)="search()">
+                <mat-icon>search</mat-icon>
+                Buscar
+              </button>     
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="container">
+      <div class="table-loading" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="container-table">  
+        <div class="table-content">
+          <mat-table #table matSort [dataSource]="dataSource">
+            <ng-container matColumnDef="name">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</mat-header-cell>
+              <mat-cell *matCellDef="let comic"> {{comic.name}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="categories">
+              <mat-header-cell *matHeaderCellDef> Categorías </mat-header-cell>
+              <mat-cell *matCellDef="let comic"> 
+                <ul>
+                  <ng-container *ngFor="let category of comic.categories">
+                    <li>* {{category.name}}</li>
+                  </ng-container>
+                </ul>
+              </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Estado </mat-header-cell>
+              <mat-cell *matCellDef="let comic"> {{comic.status | status:comic.status}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="options">
+                <mat-header-cell *matHeaderCellDef> Opciones </mat-header-cell>
+                <mat-cell *matCellDef="let comic">
+                  <button mat-icon-button (click)="goToUpdate(comic.comicId)" matTooltip="Editar">
+                      <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="goToListChapter(comic.comicId)" matTooltip="Ver Capítulos">
+                      <mat-icon>list</mat-icon>
+                  </button>
+                </mat-cell>
+              </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>  
+        </div>
+        <mat-paginator [pageSize]="numberRows" [length]="totalElements">
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
