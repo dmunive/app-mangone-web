@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
-  apiAdminUrl: 'http://localhost:8080/admin',
-  apiWebUrl:  'http://localhost:8080/web'
+  apiUrl: 'https://mangone-api.herokuapp.com',
+  apiAdminUrl: 'https://mangone-api.herokuapp.com/admin',
+  apiWebUrl:  'https://mangone-api.herokuapp.com/web'
 };

@@ -34,7 +34,7 @@ export class FileUploadComponent implements OnInit {
         this.fileImage = this.control.value;
         this.control.setValue('');
       }
-    }, 50);
+    },1500);
   }
 
   public fileChange(e) {
